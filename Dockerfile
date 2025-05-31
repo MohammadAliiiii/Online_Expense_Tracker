@@ -12,3 +12,6 @@ EXPOSE 8080
 
 # Start Tomcat
 CMD ["catalina.sh", "run"]
+
+# Disable shutdown port for Tomcat
+ENV CATALINA_OPTS="-Dtomcat.shutdown.port=-1"
