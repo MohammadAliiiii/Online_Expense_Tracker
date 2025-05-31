@@ -1,17 +1,14 @@
-# Use official Tomcat base image with Java
-FROM tomcat:9-jdk11
+# Use official Tomcat 8.5 image
+FROM tomcat:8.5
 
-# Remove default apps
+# Remove default webapps to avoid conflicts
 RUN rm -rf /usr/local/tomcat/webapps/*
 
-# Copy your WAR into Tomcat’s webapps directory
-COPY ./webapps/ROOT.war /usr/local/tomcat/webapps/ROOT.war
+# Copy your WAR file into the ROOT webapp location
+COPY target/yourapp.war /usr/local/tomcat/webapps/ROOT.war
 
-# Expose the web port
+# Expose port 8080
 EXPOSE 8080
 
 # Start Tomcat
 CMD ["catalina.sh", "run"]
-
-# Disable shutdown port for Tomcat
-ENV CATALINA_OPTS="-Dtomcat.shutdown.port=-1"
