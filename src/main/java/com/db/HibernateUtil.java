@@ -20,7 +20,7 @@ public class HibernateUtil {
 			try {
 				Configuration configuration = new Configuration();
 
-				// Essential 20% properties
+				// ✅ Essential 20% Properties that matter the most
 				Properties settings = new Properties();
 				settings.put(Environment.DRIVER, "com.mysql.cj.jdbc.Driver");
 				settings.put(Environment.URL, "jdbc:mysql://db4free.net:3306/expensetracker?useSSL=false");
@@ -34,7 +34,7 @@ public class HibernateUtil {
 
 				configuration.setProperties(settings);
 
-				// Entity classes
+				// ✅ Adding annotated entity classes
 				configuration.addAnnotatedClass(User.class);
 				configuration.addAnnotatedClass(Expense.class);
 
@@ -44,7 +44,8 @@ public class HibernateUtil {
 				sessionFactory = configuration.buildSessionFactory(serviceRegistry);
 
 			} catch (Exception e) {
-				e.printStackTrace(); // This logs configuration or connection errors
+				System.err.println("🔥 Hibernate Configuration Failed:");
+				e.printStackTrace(); // 🔍 Vital for debugging DB or config issues
 			}
 		}
 		return sessionFactory;

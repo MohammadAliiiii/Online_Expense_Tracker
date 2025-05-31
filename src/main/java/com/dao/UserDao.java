@@ -7,6 +7,7 @@ import org.hibernate.Transaction;
 
 import com.entity.User;
 
+@SuppressWarnings("deprecation")
 public class UserDao {
 	private SessionFactory factory = null;
 	private Session session = null;
