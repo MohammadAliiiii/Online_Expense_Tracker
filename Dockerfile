@@ -1,20 +1,17 @@
-# Use official Tomcat 8.5 image with Java 11
-FROM tomcat:8.5-jdk11
+# Use official Tomcat base image with Java
+FROM tomcat:8.5-jdk8
 
-# Remove default apps to avoid conflicts
+# Remove default apps
 RUN rm -rf /usr/local/tomcat/webapps/*
 
-# Copy your WAR file to ROOT app slot
+# Copy your WAR into Tomcat’s webapps directory
 COPY ./webapps/ROOT.war /usr/local/tomcat/webapps/ROOT.war
 
-# Disable shutdown port by editing server.xml before start
-RUN sed -i 's/port="8005"/port="-1"/' /usr/local/tomcat/conf/server.xml
-
-# Optional: keep shutdown port disabled via environment variable
-ENV CATALINA_OPTS="-Dtomcat.shutdown.port=-1"
-
-# Expose HTTP port
+# Expose the web port
 EXPOSE 8080
 
-# Start Tomcat in foreground (required for Docker)
+# Start Tomcat
 CMD ["catalina.sh", "run"]
+
+# Disable shutdown port for Tomcat
+ENV CATALINA_OPTS="-Dtomcat.shutdown.port=-1"
