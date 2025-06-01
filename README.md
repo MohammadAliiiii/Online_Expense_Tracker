@@ -29,7 +29,21 @@ The project emphasizes modular architecture and practical functionality using DA
 
 ## 📂 Project Structure
 
-Online_Expense_Tracker/ ├── src/ │   ├── dao/           # Database logic │   ├── db/            # Connection factory │   ├── entity/        # User and Transaction models │   ├── servlet/       # Controllers (Add, Delete, Login, etc.) ├── WebContent/ │   ├── pages/         # JSP views │   ├── css/           # Stylesheets │   └── WEB-INF/       # web.xml configuration
+Online_Expense_Tracker/
+├── src/
+│   ├── dao/                    # Data Access Objects (e.g., UserDao.java, ExpenseDao.java)
+│   ├── db/                     # DB connection (e.g., DBConnect.java)
+│   ├── entity/                 # POJOs (e.g., User.java, Expense.java)
+│   ├── servlet/                # Java Servlets (e.g., LoginServlet.java, AddExpenseServlet.java)
+├── WebContent/
+│   ├── css/                    # Stylesheets
+│   ├── js/                     # JavaScript files (if any)
+│   ├── images/                 # Images and icons
+│   ├── pages/                  # JSP files (e.g., login.jsp, dashboard.jsp)
+│   └── WEB-INF/
+│       └── web.xml             # Deployment descriptor
+├── README.md
+└── .classpath / .project       # Eclipse-specific files
 
 ---
 
